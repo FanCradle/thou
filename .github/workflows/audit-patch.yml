@@ -1,0 +1,50 @@
+name: Security Audit & Patch
+
+on:
+  schedule:
+    - cron: '0 3 * * 1' # Runs every Monday at 3AM UTC
+  workflow_dispatch:
+
+jobs:
+  audit-and-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run audit and auto-fix
+        run: pnpm update --latest
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git add pnpm-lock.yaml package.json
+          git commit -m "chore(security): update vulnerable packages"
+          git push
+
+      - name: Create Pull Request
+        if: steps.git-check.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(security): update vulnerable packages"
+          title: "Security update: patch vulnerable dependencies"
+          branch: security-patch-${{ github.run_id }}
