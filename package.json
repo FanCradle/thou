@@ -24,6 +24,7 @@
     "dotenv": "^16.5.0",
     "helia": "^5.3.0",
     "multiformats": "^13.3.2",
+    "nodemon": "^3.1.10",
     "oauth4webapi": "^3.5.0",
     "permissionless": "^0.2.44",
     "ts-node": "^10.9.2",

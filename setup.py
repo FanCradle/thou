@@ -1,9 +1,12 @@
 from setuptools import setup, find_packages
 from setuptools.command.install import install
+from setuptools import Command
 import subprocess
 import shutil
 import sys
 import os
+
+from path_generator import generate_app_routes
 
 class PostInstallCommand(install):
     """Custom install command to build frontend using Bun."""
@@ -32,6 +35,31 @@ class PostInstallCommand(install):
             print(f"Bun build failed: {e}")
             sys.exit(1)
 
+class GenerateRoutesCommand(Command):
+    """Custom command: python setup.py generate_routes"""
+    description = 'Generate route folders and page.tsx files.'
+    user_options = [
+        ('paths=', None, 'Comma-separated list of route paths'),
+        ('overwrite', None, 'Overwrite existing files')
+    ]
+
+    def initialize_options(self):
+        self.paths = None
+        self.overwrite = False
+
+    def finalize_options(self):
+        if isinstance(self.overwrite, str):
+            self.overwrite = self.overwrite.lower() in ['true', '1', 'yes']
+
+    def run(self):
+        if self.paths:
+            paths_list = [p.strip() for p in self.paths.split(',') if p.strip()]
+        else:
+            paths_list = None
+
+        print(f"🛠 Requesting route generation (overwrite={self.overwrite})...")
+        generate_app_routes(paths=paths_list, overwrite=self.overwrite)
+
 setup(
     name="thou",
     version="0.1.0",
@@ -40,6 +68,7 @@ setup(
     include_package_data=True,
     cmdclass={
         'install': PostInstallCommand,
+        'generate_routes': GenerateRoutesCommand,
     },
     classifiers=[
         "Programming Language :: Python :: 3",
