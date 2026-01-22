@@ -1,5 +1,9 @@
 # FanCradle Blogs
 
+### Live Deployment
+- Most updates will be below (Maintain this repo, for forks and reversions)
+- https://github.com/austineinstein/t
+
 **Steps to run:**
 - setup.py install
 - pnpm run start
@@ -53,4 +57,5 @@ To establish comprehensive topical authority, below is a detailed topical map co
 | **Music Distribution**         | Details on FanCradle's music distribution channels.                             | /music-distribution          |
 | **Community Outreach**         | Initiatives to support local communities and promote cultural awareness.        | /community-outreach          |
 | **Collaborations**             | Collaborations between FanCradle artists and other musicians or brands.         | /collaborations              |
+
 
