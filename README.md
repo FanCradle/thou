@@ -2,7 +2,7 @@
 
 ### Live Deployment
 - Most updates will be below (Maintain this repo, for forks and reversions)
-- https://github.com/austineinstein/t
+- https://fancradle.com
 
 **Steps to run:**
 - setup.py install
