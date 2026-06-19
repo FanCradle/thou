@@ -1,7 +1,7 @@
 # FanCradle Blogs
 
 ### Live Deployment
-- Most updates will be below (Maintain this repo, for forks and reversions)
+- Most updates (Maintain this repo, including forks and reversions)
 - https://fancradle.com
 
 **Steps to run:**
