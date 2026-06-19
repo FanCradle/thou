@@ -1,7 +1,7 @@
 # FanCradle Blogs
 
 ### Live Deployment
-- Most updates (Maintain this repo, including forks and reversions)
+- Most updates (Maintain this repo, include forks and reversions)
 - https://fancradle.com
 
 **Steps to run:**
@@ -22,6 +22,7 @@ English explanation of the code, visit:
 
 ### Source Code
 Add accounts/contracts:
+*better* *hosted*
 https://github.com/FanCradle/DAO
 
 ## Key Features of FanCradle
