@@ -9,9 +9,9 @@
 - pnpm run start
 
 ### Try Here
-- Explore [TINATB](https://fancradle.com/tinatb) to try the platform
+- Explore [TINATB](https://apps.fancradle.com/tinatb) to try the platform
 - Use this [repo](https://github.com/austineinstein/blog) if you blog. I would also use a medium for many reasons. 
-- [FanCradle](https://fancradle.com/tinatb)
+- [FanCradle](https://fancradle.com/)
 - ABI: `artifacts/tinatb`
 
 ### Code Explanation
